@@ -20,7 +20,15 @@ function enviarObjeto(objeto){
         url: "http://localhost:3000/users/new-user",
         type: 'POST',
         data: { key: 'obj', value: json },
-        dataType: 'json'
+        dataType: 'json',
+        /*aqui como es ajax, el que envia el req ha comprobar-user, cuando compr..da ya el result, al ser ajax
+        el que lo envia, entonces le manda de vuelta el result, que seria en este caso el response
+        */
+        success: function(response){
+            alert("usuarioCorrecto");
+            
+
+        }
     });
 }
 
