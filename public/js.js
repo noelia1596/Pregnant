@@ -4,12 +4,20 @@ var nuevoUsuario;
 
 $(document).ready(function(){
     $('#enviar').click(function(){
-       usuario= $('#usuario').val();
-       password = $('#password').val();
+       usuario= $('#inputEntrarUsuario').val();
+       password = $('#inputEntrarPassword').val();
 
      nuevoUsuario = new Usuario (usuario, password);
     enviarObjeto(nuevoUsuario);
-    })
+    });
+
+    $('#registrarse').click(function(){
+        console.log("holaa");
+    
+        $('#inicio').hide();
+        $('#registrar').show();
+        
+    });
 })
 
 function enviarObjeto(objeto){
@@ -17,7 +25,7 @@ function enviarObjeto(objeto){
     var json = JSON.stringify(objeto); 
     
     $.ajax({
-        url: "http://localhost:3000/users/new-user",
+        url: "http://localhost:3000/users/comprobar-user",
         type: 'POST',
         data: { key: 'obj', value: json },
         dataType: 'json',
@@ -26,8 +34,8 @@ function enviarObjeto(objeto){
         */
         success: function(response){
             alert("usuarioCorrecto");
+            console.log(response);
             
-
         }
     });
 }

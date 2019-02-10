@@ -4,25 +4,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <script type="text/javascript" src="usuario.js"></script>
     <script type="text/javascript" src="js.js"></script>
 
 </head>
+
 <body>
+    <div class="container-fluid" id="inicio">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputUsuario">Usuario</label>
+                    <input type="text" class="form-control" id="inputEntrarUsuario" placeholder="Usuario">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputEntrarPassword" placeholder="Password">
+                </div>              
+            </div>
+            <div class="form-row">
+                <button type="button" id="enviar" class="btn btn-primary btnSeccion">Entrar</button>
+                <button type="button" id="registrarse" class="btn btn-primary btnSeccion">Registrarme</button>
+             </div>
+        </form>     
+    </div>
+
+
+<div class="container-fluid" style="display: none" id="registrar">
     <form>
-            <div>
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" />
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputUsuario">Usuario</label>
+                <input type="text" class="form-control" id="inputUsuario" placeholder="Usuario">
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="text" id="password" />
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            </div> 
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
-           
-       
-    </form>
-    <input type="button" value="entrar" id="enviar">
+            <div class="form-group col-md-6">
+                <label for="inputPassword2">Repite Password</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Repite Password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputApellidos">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class='form-group col-md-6'>
+                <label for="inputFechaNacimiento">Fecha Nacimiento(Mama)</label>
+                <input type='date' class="form-control" id="inputFechaNacimiento"/> 
+            </div>
+            <div class='form-group col-md-6'>
+                <label for="inputFechaEmbarazo">Fecha Embarazo</label>
+                <input type='date' class="form-control" id="inputFechaEmbarazo"/> 
+            </div>
+        </div>  
+        <div class="form-row">
+            <div class='form-group col-md-6'>
+                <label>¿Tienes el apoyo del padre del bebe?</label>
+               
+                    <input class="form-check-input" type="radio" name="opciones" id="radioSi" value="si" checked>
+                    <label class="form-check-label">
+                    Si
+                    </label>
+                  
+                
+                    <input class="form-check-input" type="radio" name="opciones" id="radioNo" value="no">
+                    <label class="form-check-label">
+                    No
+                    </label> 
+                
+            </div>                       
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre Papa</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputApellidos">Apellidos</label>
+                <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Fecha Nacimiento(Papa)</label>
+                <input type="date" class="form-control" id="inputFechaNacimientop">
+            </div>  
+                 
+        </div >
+            
+        <div class="form-row">
+              <button type="button" class="btn btn-primary btnSeccion">Registrar</button>
+        </div>
+    </form>     
+</div>
+    
+   
 </body>
 </html>

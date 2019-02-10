@@ -37,8 +37,22 @@ router.use('/comprobar-user', function (req, res, next) {
     var obj = JSON.parse(req.body.value); 
     console.log(obj);
     let devuelve = comprobarUsuario(obj);
+
+    
+     //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
+     var connection = getConnection();
+     var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+obj.nombre+"' and password='"+obj.password+"'";
+   
+     connection.query(sql, function (err, result, fields) {
+       if (err) throw err;
+       res.send(result);
+       console.log('result',result)
+     });
+     connection.end();
+
+    console.log('devuelve',devuelve);
     //a la respuesta le vamos a enviar la respuesta que nos salga de comprobarUsuario()
-    res.send(devuelve);
+    
   }catch (ex) {
     console.error(ex);
   }
@@ -50,10 +64,11 @@ function comprobarUsuario(usuario){
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
     var connection = getConnection();
     var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+usuario.nombre+"' and password='"+usuario.password+"'";
-    
+  
     connection.query(sql, function (err, result, fields) {
       if (err) throw err;
       respuesta = result;
+      console.log('result',result)
     });
     connection.end();
   } catch (error) {
