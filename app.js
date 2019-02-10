@@ -9,6 +9,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+/*Para que en el Post recoja el objeto correctamente
+(sino, mete antes del objeto letras y otras cosas,
+no venia como objeto como tal)
+*/
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
