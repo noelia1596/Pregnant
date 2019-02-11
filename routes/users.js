@@ -14,13 +14,29 @@ router.use('/new-user', function (req, res, next) {
  
   try {
       //Pasamos el JSON (string) a objeto de js, el objeto se abre,el json no
+      /*
+      nos llega json (req), de aqui queremos el parametro body, que este tiene una key y un value, y queremos solo el value
+      entonces pasamos var obj = json.....a un objeto
+      */
     var obj = JSON.parse(req.body.value); 
-    //comprobar es nulo si no esta en la base de datos
+    //comprobar es nulo si no esta en la base de datos, sino, no le dejamos registrarse
     let comprobar = comprobarUsuario(obj);
     console.log('comprobar',comprobar);
     if(comprobar == null){
-      let usuario = crearUsuario(obj);
-      res.send(usuario); 
+      var connection = getConnection();
+      //y ponemos '"+obj.username+"', porque es la variable que habiamos pasado antes, y de esta que coja username....y demas
+      var sql = "INSERT INTO foodsaver.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+obj.username+"','"+obj.password+"','"+obj.nombre+"','"+obj.apellidos+"','"+obj.fechaNacimientoMama+"','"+obj.fechaEmbarazo+"','"+obj.nombrePadre+"','"+obj.fechaNacimientoPadre+"','"+obj.apellidosPadre+"')";
+          
+      connection.query(sql, function (err, result, fields) {
+        if (err) throw err;
+        //a la respuesta(res), le vamos a enviar el result que se ha generado en la query(esto se lo envia, a quien a llamado a /new-user,que ha sido ajax)
+        res.send(result);
+        console.log("usuario insertado",result);
+        
+      });
+      connection.end();
+      res.send(usuario);
+      res.sendStatus(200);
     }else{
       res.send(comprobar);
     } 

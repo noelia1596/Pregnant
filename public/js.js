@@ -21,7 +21,7 @@ $(document).ready(function(){
      
     });
     //cambiado
-    /*
+    
     $('#registrar').click(function(){
         username= $('#inputUsuario').val();
         password = $('#inputEntrarPassword').val();
@@ -30,7 +30,8 @@ $(document).ready(function(){
         fechaNacimientoMama = $('#inputFechaNacimiento').val();
         fechaEmbarazo = $('#inputFechaEmbarazo').val();
         nombrePadre = $('#inputNombree').val();
-        fechaNacimientoPadre = $('#inputFechaNacimientop').val();
+        fechaNacimientoPadre =$('#inputFechaNacimientop').val();
+        console.log(fechaNacimientoMama);
         apellidosPadre = $('#inputApellidosp').val();
 
       nuevoUsuario = new Usuario (username, password,nombre, apellidos, fechaNacimientoMama, fechaEmbarazo, nombrePadre, fechaNacimientoPadre, apellidosPadre);
@@ -38,35 +39,12 @@ $(document).ready(function(){
      });
 
 
-     function registroObjeto(objeto){
-        //lo pasamos a texto
-            var json = JSON.stringify(objeto); 
-            
-            $.ajax({
-                url: "http://localhost:3000/users/new-user",
-                type: 'POST',
-                data: { key: 'obj', value: json },
-                dataType: 'json',
-                /*aqui como es ajax, el que envia el req ha comprobar-user, cuando compr..da ya el result, al ser ajax
-                el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
-                */
-               /*
-                success: function(response){
-                    alert("usuarioRegistrado");
-                    console.log(response);
-                    
-                }
-            });
-        }
-
-
-*/
 
     $('#registrarse').click(function(){
         console.log("holaa");
     
         $('#inicio').hide();
-        $('#registrar').show();
+        $('#divRegistrar').show();
         
     });
     $("#radioSi").click(function(){
@@ -110,3 +88,24 @@ function enviarObjeto(objeto){
     });
 }
 
+
+function registroObjeto(objeto){
+    //lo pasamos a texto
+        var json = JSON.stringify(objeto); 
+        
+        $.ajax({
+            url: "http://localhost:3000/users/new-user",
+            type: 'POST',
+            data: { key: 'obj', value: json },
+            dataType: 'json',
+            /*aqui como es ajax, el que envia el req ha comprobar-user, cuando compr..da ya el result, al ser ajax
+            el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
+            */
+           
+            success: function(response){
+                alert("usuarioRegistrado");
+                console.log(response);
+                
+            }
+        });
+    }
