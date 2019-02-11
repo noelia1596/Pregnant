@@ -41,7 +41,7 @@ router.use('/comprobar-user', function (req, res, next) {
     
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
      var connection = getConnection();
-     var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+obj.nombre+"' and password='"+obj.password+"'";
+     var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
    
      connection.query(sql, function (err, result, fields) {
        if (err) throw err;
@@ -51,10 +51,12 @@ router.use('/comprobar-user', function (req, res, next) {
      connection.end();
 
     console.log('devuelve',devuelve);
+   
     //a la respuesta le vamos a enviar la respuesta que nos salga de comprobarUsuario()
     
   }catch (ex) {
     console.error(ex);
+    console.log("debes de registarte");
   }
 });
 
@@ -63,7 +65,8 @@ function comprobarUsuario(usuario){
   try {
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
     var connection = getConnection();
-    var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+usuario.nombre+"' and password='"+usuario.password+"'";
+    //en casa es nombre no username
+    var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+usuario.username+"' and password='"+usuario.password+"'";
   
     connection.query(sql, function (err, result, fields) {
       if (err) throw err;
@@ -73,6 +76,7 @@ function comprobarUsuario(usuario){
     connection.end();
   } catch (error) {
     console.error(error);
+    
   }
   return respuesta;
 }
@@ -82,7 +86,7 @@ function crearUsuario(usuario){
   let respuesta = null;
   try {
     var connection = getConnection();
-    var sql = "INSERT INTO foodsaver.usuarios (usuario,password)VALUES('"+usuario.nombre+"','"+usuario.password+"')";
+    var sql = "INSERT INTO foodsaver.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+usuario.username+"','"+usuario.password+"','"+usuario.nombre+"','"+usuario.apellidos+"','"+usuario.fechaNacimientoMama+"','"+usuario.fechaEmbarazo+"','"+usuario.nombrePadre+"','"+usuario.fechaNacimientoPadre+"','"+usuario.apellidosPadre+"')";
         
     connection.query(sql, function (err, result, fields) {
       if (err) throw err;
