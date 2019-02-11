@@ -13,7 +13,7 @@ var nuevoUsuario;
 $(document).ready(function(){
    
     $('#entrar').click(function(){
-       usuario= $('#inputEntrarUsuario').val();
+       username= $('#inputEntrarUsuario').val();
        password = $('#inputEntrarPassword').val();
         
        nuevoUsuario = new Usuario (username, password);
@@ -24,7 +24,7 @@ $(document).ready(function(){
     
     $('#registrar').click(function(){
         username= $('#inputUsuario').val();
-        password = $('#inputEntrarPassword').val();
+        password = $('#inputPassword').val();
         nombre = $('#inputNombre').val();
         apellidos = $('#inputApellidos').val();
         fechaNacimientoMama = $('#inputFechaNacimiento').val();
@@ -81,8 +81,15 @@ function enviarObjeto(objeto){
         el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
         */
         success: function(response){
-            alert("usuarioCorrecto");
-            console.log(response);
+            if(response.length >0){
+                alert("usuarioCorrecto");
+                window.location.replace("principal.html");
+            }else{
+                alert("usuario Incorrecto \n Debes registrarte");
+            } 
+           
+            
+            
             
         }
     });
@@ -103,7 +110,12 @@ function registroObjeto(objeto){
             */
            
             success: function(response){
-                alert("usuarioRegistrado");
+                if(response.length >0){
+                    alert("usuarioRegistrado");
+                    window.location.replace("principal.html");
+                }else{
+                    alert("usuario Incorrecto \n Debes registrarte");
+                } 
                 console.log(response);
                 
             }

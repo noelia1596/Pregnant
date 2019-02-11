@@ -25,7 +25,7 @@ router.use('/new-user', function (req, res, next) {
     if(comprobar == null){
       var connection = getConnection();
       //y ponemos '"+obj.username+"', porque es la variable que habiamos pasado antes, y de esta que coja username....y demas
-      var sql = "INSERT INTO foodsaver.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+obj.username+"','"+obj.password+"','"+obj.nombre+"','"+obj.apellidos+"','"+obj.fechaNacimientoMama+"','"+obj.fechaEmbarazo+"','"+obj.nombrePadre+"','"+obj.fechaNacimientoPadre+"','"+obj.apellidosPadre+"')";
+      var sql = "INSERT INTO pregnant.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+obj.username+"','"+obj.password+"','"+obj.nombre+"','"+obj.apellidos+"','"+obj.fechaNacimientoMama+"','"+obj.fechaEmbarazo+"','"+obj.nombrePadre+"','"+obj.fechaNacimientoPadre+"','"+obj.apellidosPadre+"')";
           
       connection.query(sql, function (err, result, fields) {
         if (err) throw err;
@@ -38,7 +38,7 @@ router.use('/new-user', function (req, res, next) {
       res.send(usuario);
       res.sendStatus(200);
     }else{
-      res.send(comprobar);
+      res.send([]);
     } 
   }catch (ex) {
     console.error(ex);
@@ -57,7 +57,7 @@ router.use('/comprobar-user', function (req, res, next) {
     
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
      var connection = getConnection();
-     var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
+     var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
    
      connection.query(sql, function (err, result, fields) {
        if (err) throw err;
@@ -82,7 +82,7 @@ function comprobarUsuario(usuario){
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
     var connection = getConnection();
     //en casa es nombre no username
-    var sql = "SELECT * FROM foodsaver.usuarios WHERE usuario= '"+usuario.username+"' and password='"+usuario.password+"'";
+    var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+usuario.username+"' and password='"+usuario.password+"'";
   
     connection.query(sql, function (err, result, fields) {
       if (err) throw err;
@@ -102,7 +102,7 @@ function crearUsuario(usuario){
   let respuesta = null;
   try {
     var connection = getConnection();
-    var sql = "INSERT INTO foodsaver.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+usuario.username+"','"+usuario.password+"','"+usuario.nombre+"','"+usuario.apellidos+"','"+usuario.fechaNacimientoMama+"','"+usuario.fechaEmbarazo+"','"+usuario.nombrePadre+"','"+usuario.fechaNacimientoPadre+"','"+usuario.apellidosPadre+"')";
+    var sql = "INSERT INTO pregnant.usuarios (usuario,password,nombre,apellidos,fechaNacimientoMama,fechaEmbarazo,nombrePadre,fechaNacimientoPadre,apellidosPadre)VALUES('"+usuario.username+"','"+usuario.password+"','"+usuario.nombre+"','"+usuario.apellidos+"','"+usuario.fechaNacimientoMama+"','"+usuario.fechaEmbarazo+"','"+usuario.nombrePadre+"','"+usuario.fechaNacimientoPadre+"','"+usuario.apellidosPadre+"')";
         
     connection.query(sql, function (err, result, fields) {
       if (err) throw err;
@@ -122,7 +122,7 @@ function getConnection(){
       host:'localhost',
       user:'noe',
       password:'bar',
-      database:'foodsaver'
+      database:'pregnant'
   });
   return connection;
 }
