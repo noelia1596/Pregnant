@@ -37,12 +37,15 @@ $(document).ready(function(){
       nuevoUsuario = new Usuario (username, password,nombre, apellidos, fechaNacimientoMama, fechaEmbarazo, nombrePadre, fechaNacimientoPadre, apellidosPadre);
       registroObjeto(nuevoUsuario);
      });
-
-
-
+/*borrar un usuario de la base de datos
+    $('#borrarUsuario').click(function(){
+        username= $('#inputUsuario').val();
+        password = $('#inputPassword').val();
+        nuevoUsuario = new Usuario (username, password);
+        BorrarObjeto(nuevoUsuario);
+    })
+*/
     $('#registrarse').click(function(){
-        console.log("holaa");
-    
         $('#inicio').hide();
         $('#divRegistrar').show();
         
@@ -66,8 +69,6 @@ $(document).ready(function(){
    
 })
 
-
-
 function enviarObjeto(objeto){
 //lo pasamos a texto
     var json = JSON.stringify(objeto); 
@@ -86,15 +87,37 @@ function enviarObjeto(objeto){
                 window.location.replace("principal.html");
             }else{
                 alert("usuario Incorrecto \n Debes registrarte");
-            } 
-           
-            
-            
-            
+            }        
         }
     });
 }
+/*
+function BorrarObjeto(objeto){
+//lo pasamos a texto
+    var json = JSON.stringify(objeto); 
+    
+    $.ajax({
+        url: "http://localhost:3000/users/borrar-user",
+        type: 'POST',
+        data: { key: 'obj', value: json },
+        dataType: 'json',
+        /*aqui como es ajax, el que envia el req ha comprobar-user, cuando compr..da ya el result, al ser ajax
+        el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
+        */
 
+        /*
+       success: function(response){
+        if(response.length >0){
+            alert("usuarioBorrado");
+        }else{
+            alert("usuario no borrado \n Vuelve a intentarlo");
+        }        
+    }
+});
+}
+
+
+*/
 
 function registroObjeto(objeto){
     //lo pasamos a texto
@@ -108,14 +131,13 @@ function registroObjeto(objeto){
             /*aqui como es ajax, el que envia el req ha comprobar-user, cuando compr..da ya el result, al ser ajax
             el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
             */
-           
             success: function(response){
                 if(response.length >0){
                     alert("usuarioRegistrado");
                     window.location.replace("principal.html");
                 }else{
                     alert("usuario Incorrecto \n Debes registrarte");
-                } 
+                }//aqui me da las filas afectadas y demas
                 console.log(response);
                 
             }

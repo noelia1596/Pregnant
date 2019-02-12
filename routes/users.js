@@ -20,6 +20,7 @@ router.use('/new-user', function (req, res, next) {
       */
     var obj = JSON.parse(req.body.value); 
     //comprobar es nulo si no esta en la base de datos, sino, no le dejamos registrarse
+    
     let comprobar = comprobarUsuario(obj);
     console.log('comprobar',comprobar);
     if(comprobar == null){
@@ -30,15 +31,13 @@ router.use('/new-user', function (req, res, next) {
       connection.query(sql, function (err, result, fields) {
         if (err) throw err;
         //a la respuesta(res), le vamos a enviar el result que se ha generado en la query(esto se lo envia, a quien a llamado a /new-user,que ha sido ajax)
-        res.send(result);
-        console.log("usuario insertado",result);
+        res.send([result]);
+        console.log("usuario insertado",[result]);
         
       });
       connection.end();
-      res.send(usuario);
-      res.sendStatus(200);
     }else{
-      res.send([]);
+      res.send(result);
     } 
   }catch (ex) {
     console.error(ex);
@@ -53,8 +52,34 @@ router.use('/comprobar-user', function (req, res, next) {
     var obj = JSON.parse(req.body.value); 
     console.log(obj);
     let devuelve = comprobarUsuario(obj);
+     //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
+     var connection = getConnection();
+     var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
+   
+     connection.query(sql, function (err, result, fields) {
+       if (err) throw err;
+       res.send(result);
+       console.log('result',result)
+     });
+     connection.end();
 
+    console.log('devuelve',devuelve);
+   
+    //a la respuesta le vamos a enviar la respuesta que nos salga de comprobarUsuario()
     
+  }catch (ex) {
+    console.error(ex);
+    console.log("debes de registarte");
+  }
+});
+/*
+router.use('/borrar-user', function (req, res, next) {
+ 
+  try {
+      //Pasamos el JSON (string) a objeto de js, el objeto se abre,el json no
+    var obj = JSON.parse(req.body.value); 
+    console.log(obj);
+    let devuelve = comprobarUsuario(obj);
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
      var connection = getConnection();
      var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
@@ -76,12 +101,14 @@ router.use('/comprobar-user', function (req, res, next) {
   }
 });
 
+
+*/
 function comprobarUsuario(usuario){
   let respuesta = null;
   try {
      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
     var connection = getConnection();
-    //en casa es nombre no username
+    
     var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+usuario.username+"' and password='"+usuario.password+"'";
   
     connection.query(sql, function (err, result, fields) {
@@ -97,7 +124,7 @@ function comprobarUsuario(usuario){
   return respuesta;
 }
 
-
+/*
 function crearUsuario(usuario){
   let respuesta = null;
   try {
@@ -116,7 +143,7 @@ function crearUsuario(usuario){
   }
 return respuesta;
 }
-
+*/
 function getConnection(){
   var connection = mysql.createConnection({
       host:'localhost',
