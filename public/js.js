@@ -37,14 +37,14 @@ $(document).ready(function(){
       nuevoUsuario = new Usuario (username, password,nombre, apellidos, fechaNacimientoMama, fechaEmbarazo, nombrePadre, fechaNacimientoPadre, apellidosPadre);
       registroObjeto(nuevoUsuario);
      });
-/*borrar un usuario de la base de datos
+//borrar un usuario de la base de datos
     $('#borrarUsuario').click(function(){
-        username= $('#inputUsuario').val();
-        password = $('#inputPassword').val();
+        username= $('#inputEntrarUsuario').val();
+        password = $('#inputEntrarPassword').val();
         nuevoUsuario = new Usuario (username, password);
         BorrarObjeto(nuevoUsuario);
     })
-*/
+
     $('#registrarse').click(function(){
         $('#inicio').hide();
         $('#divRegistrar').show();
@@ -84,6 +84,7 @@ function enviarObjeto(objeto){
         success: function(response){
             if(response.length >0){
                 alert("usuarioCorrecto");
+                localStorage.setItem('registros', JSON.stringify(response[0].Object));
                 window.location.replace("principal.html");
             }else{
                 alert("usuario Incorrecto \n Debes registrarte");
@@ -91,7 +92,7 @@ function enviarObjeto(objeto){
         }
     });
 }
-/*
+
 function BorrarObjeto(objeto){
 //lo pasamos a texto
     var json = JSON.stringify(objeto); 
@@ -105,19 +106,19 @@ function BorrarObjeto(objeto){
         el que lo envia, entonces le manda devuelta el result, que seria en este caso el response
         */
 
-        /*
+        
        success: function(response){
-        if(response.length >0){
+        if(response.affectedRows == 1){
             alert("usuarioBorrado");
         }else{
-            alert("usuario no borrado \n Vuelve a intentarlo");
+            alert("usuario no borrado \n El usuario no existe");
         }        
     }
 });
 }
 
 
-*/
+
 
 function registroObjeto(objeto){
     //lo pasamos a texto
@@ -134,6 +135,9 @@ function registroObjeto(objeto){
             success: function(response){
                 if(response.length >0){
                     alert("usuarioRegistrado");
+                    // Put the object into storage
+                    console.log(response[0]);
+                    localStorage.setItem('registros', JSON.stringify(response[0].Object));
                     window.location.replace("principal.html");
                 }else{
                     alert("usuario Incorrecto \n Debes registrarte");

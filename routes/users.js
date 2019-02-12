@@ -72,37 +72,38 @@ router.use('/comprobar-user', function (req, res, next) {
     console.log("debes de registarte");
   }
 });
-/*
+
 router.use('/borrar-user', function (req, res, next) {
  
   try {
       //Pasamos el JSON (string) a objeto de js, el objeto se abre,el json no
     var obj = JSON.parse(req.body.value); 
     console.log(obj);
-    let devuelve = comprobarUsuario(obj);
-     //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
+    
+    
+      //Comprobamos que el usuario y password que estamos metiendo, este en nuestra base de datos
      var connection = getConnection();
-     var sql = "SELECT * FROM pregnant.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
+     var sql = "delete from  pregnant.usuarios WHERE usuario= '"+obj.username+"' and password='"+obj.password+"'";
    
      connection.query(sql, function (err, result, fields) {
        if (err) throw err;
        res.send(result);
-       console.log('result',result)
+       console.log('result, borrado',result)
      });
      connection.end();
-
-    console.log('devuelve',devuelve);
+    
+    console.log('borrarse boroooooo',respuesta);
    
     //a la respuesta le vamos a enviar la respuesta que nos salga de comprobarUsuario()
     
   }catch (ex) {
     console.error(ex);
-    console.log("debes de registarte");
+    console.log("borradoofinal");
   }
 });
 
 
-*/
+
 function comprobarUsuario(usuario){
   let respuesta = null;
   try {
