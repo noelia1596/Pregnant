@@ -67,6 +67,8 @@ $(document).ready(function(){
         }
     });
    
+
+    $('')
    
    
 })
@@ -86,7 +88,7 @@ function enviarObjeto(objeto){
         success: function(response){
             if(response.length >0){
                 alert("usuarioCorrecto");
-                localStorage.setItem('registros', JSON.stringify(response[0].Object));
+                localStorage.setItem('registros', JSON.stringify(response[0]));
                 window.location.replace("principal.html");
             }else{
                 alert("usuario Incorrecto \n Debes registrarte");

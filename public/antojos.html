@@ -22,13 +22,40 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            </div>
+                    
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.php">Alimentacion</a></li>
+                <li><a href="about.php">Baile</a></li>
+                <li><a href="#portfolio">Cambios en tu cuerpo</a></li>
+                <li><a href="#" id="antojos">Antojos</a></li>
+                <li><a href="contact.php">Comunicar embarazo en el trabajo</a></li>
+                <li><a href="contact.php">Medicamentos no recomendados</a></li>
+                <li><a href="contact.php">Evolucionamiento del bebe</a></li>
+                            
+            </ul>
+            </div>
+        </div>
+    
+        
+            <li id="verAntojo"><a href="#">Ver antojos</a></li>
+            <li id="insertarAntojo"><a href="#">Insertar antojo</a></li>
+            
+    </nav>  
 <div class="container-fluid" id="divAntojos">
     <form>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Usuario</label>
-                <input type="text" class="form-control" id="inputUsuarioa" placeholder="Usuario">
-            </div>
             <div class="form-group col-md-6">
                 <label>Nombre Del Antojo</label>
                 <input type="text" class="form-control" id="inputNombreAntojo" placeholder="Di exactamente cual fue el antojo">
