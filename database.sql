@@ -11,4 +11,17 @@ CREATE TABLE `usuarios` (
   `ApellidosPadre` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`usuario`)
 );
+CREATE TABLE `antojos` (
+  `usuario` varchar(60) NOT NULL,
+  `NombreDelAntojo` varchar(50) NOT NULL,
+  `TipoDeAntojo` varchar(50) DEFAULT NULL,
+  `FechaDelAntojo` date DEFAULT NULL,
+  `VecesDadasDelAntojo` int DEFAULT NULL,
+  `AQuienLeDio` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`NombreDelAntojo`),
+  foreign key (`usuario`) references usuarios(`usuario`)
+);
+
+
 select * from usuarios;
+select * from antojos;

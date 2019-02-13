@@ -67,6 +67,8 @@ $(document).ready(function(){
         }
     });
    
+   
+   
 })
 
 function enviarObjeto(objeto){
@@ -147,3 +149,5 @@ function registroObjeto(objeto){
             }
         });
     }
+
+   
