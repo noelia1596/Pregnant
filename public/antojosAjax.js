@@ -6,10 +6,11 @@ let vecesDadasAntojo = "";
 let aQuienDio = "";
 
 var nuevoAntojo;
+/*
 var retrievedJSON = localStorage.getItem('registros');
 let usuarioRegistrado = JSON.parse(retrievedJSON);
 console.log('retrievedObject: ',usuarioRegistrado);
-
+*/
 
 $(document).ready(function(){
     $('#guardar').click(function(){
