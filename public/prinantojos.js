@@ -15,10 +15,18 @@ $(document).ready(function(){
         $("#insertarAntojo").toggle();
     });
 
-    $('#verAntojo').click(function(){
-        window.location.replace("verAntojos.html");
+    $("#insertarAntojo").click(function(){
+        window.location.replace("antojos.html");
         localStorage.setItem('registros', JSON.stringify(usuarioRegistrado));
-    });
+        console.log("hola");
+    }); 
+
+    $("#enviarPrincipal").click(function(){
+        window.location.replace("principal.html");
+        localStorage.setItem('registros', JSON.stringify(usuarioRegistrado));
+    }); 
+   
+
 
 
 /*

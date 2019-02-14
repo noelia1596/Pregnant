@@ -87,7 +87,6 @@ function enviarObjeto(objeto){
         */
         success: function(response){
             if(response.length >0){
-                alert("usuarioCorrecto");
                 localStorage.setItem('registros', JSON.stringify(response[0]));
                 window.location.replace("principal.html");
             }else{
@@ -140,9 +139,8 @@ function registroObjeto(objeto){
                 if(response.length >0){
                     alert("usuarioRegistrado");
                     // Put the object into storage
-                    console.log(response[0]);
-                    localStorage.setItem('registros', JSON.stringify(response[0].Object));
-                    window.location.replace("principal.html");
+                    enviarObjeto(objeto)
+
                 }else{
                     alert("usuario Incorrecto \n Debes registrarte");
                 }//aqui me da las filas afectadas y demas

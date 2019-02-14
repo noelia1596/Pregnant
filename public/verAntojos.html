@@ -15,11 +15,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
     
-    <script type="text/javascript" src="antojosFunction.js"></script>
-    <script type="text/javascript" src="antojosAjax.js"></script>
-    <script type="text/javascript" src="prinantojos.js"></script>
+    <script type="text/javascript" src="verAntojos.js"></script>
     
-   
 </head>
 
 <body>
@@ -37,7 +34,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="index.php">Alimentacion</a></li>
+                <li><a href="alimentos.html">Alimentacion</a></li>
                 <li><a href="about.php">Baile</a></li>
                 <li><a href="#portfolio">Cambios en tu cuerpo</a></li>
                 <li><a href="#" id="antojos">Antojos</a></li>
@@ -70,36 +67,16 @@
                     <th scope="col">¿A Quien Dio?</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
+                <tbody id="tbody">
                 </tbody>
               </table>
-        </div>
+
         
         
-    </form>     
+    </form> 
+    <button type="button" id="enviarPrincipal">Ir a principal</button>  
+    
+    <button type="button" id="btnVerAntojos">Ver antojos</button> 
 </div>
     
    

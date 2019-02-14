@@ -6,11 +6,11 @@ let vecesDadasAntojo = "";
 let aQuienDio = "";
 
 var nuevoAntojo;
-/*
+
 var retrievedJSON = localStorage.getItem('registros');
 let usuarioRegistrado = JSON.parse(retrievedJSON);
 console.log('retrievedObject: ',usuarioRegistrado);
-*/
+
 
 $(document).ready(function(){
     $('#guardar').click(function(){
@@ -19,15 +19,13 @@ $(document).ready(function(){
         nombreDelAntojo = $('#inputNombreAntojo').val();
         fechaDelAntojo = $('#inputFechaAntojo').val();
         vecesDadasAntojo = $('#inputVecesAntojo').val();
-        aQuienDio = $('#antojoss').val();
+        aQuienDio = $('input:radio[name=antojos]:checked').val();
 
         nuevoAntojo = new Antojos(username,tipoDeAntojo,nombreDelAntojo,fechaDelAntojo,vecesDadasAntojo,aQuienDio);
         console.log(nuevoAntojo);
         guardarAntojo(nuevoAntojo);
     });
-
 })
-
 
 function guardarAntojo(antojo){
     //lo pasamos a texto
