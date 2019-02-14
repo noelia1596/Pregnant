@@ -19,7 +19,8 @@ $(document).ready(function(){
         window.location.replace("verAntojos.html");
         localStorage.setItem('registros', JSON.stringify(usuarioRegistrado));
     });
-    
+
+
 /*
  $("#insertarAntojo").click(function(){
     localStorage.setItem('registros', JSON.stringify(usuarioRegistrado));
